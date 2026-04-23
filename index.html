@@ -86,17 +86,12 @@ button{font-family:inherit;cursor:pointer;}
 .astat b{color:#333;}
 .adiv{border-top:1px solid #d8d8d0;margin-bottom:4px;}
 
-/* README PAGE */
-#opage{display:none;padding:16px 0;}
-#opage h1{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.2em;margin-bottom:14px;text-align:center;}
-.opara{font-size:.88em;color:#333;line-height:1.75;margin-bottom:12px;}
-.opara a{color:#555;text-decoration:underline;}
-.ocopy{font-size:.78em;color:#999;line-height:1.65;margin-top:20px;padding-top:16px;border-top:1px solid #d8d8d0;font-style:italic;}
-
 /* FOOTER */
 #foot{padding:10px 0;font-size:.75em;color:#999;border-top:1px solid #d8d8d0;margin-top:8px;line-height:1.9;text-align:center;}
 #foot a{color:#777;text-decoration:underline;}
 .fcopy{font-size:.82em;color:#bbb;margin-top:4px;line-height:1.6;}
+.fabout{font-size:.78em;color:#aaa;margin-top:6px;line-height:1.7;max-width:580px;margin-left:auto;margin-right:auto;}
+.fabout a{color:#888;text-decoration:underline;}
 
 /* LOADING */
 .loading{padding:20px 0;color:#888;font-size:.85em;}
@@ -107,10 +102,6 @@ button{font-family:inherit;cursor:pointer;}
 <div id="bar">
   <div id="bar-inner">
     <a class="logo" href="#" onclick="goArticles();return false;">mtgstrategy<em>.net</em></a>
-    <div id="barnav">
-      <button class="bnav on" id="nart" onclick="goArticles()">articles</button>
-      <button class="bnav" id="nrmd" onclick="goReadme()">readme</button>
-    </div>
   </div>
 </div>
 
@@ -161,16 +152,14 @@ button{font-family:inherit;cursor:pointer;}
   </div>
 </div>
 
-<!-- README -->
-<div id="opage">
-  <div class="wrap">
-    <h1>readme</h1>
-    <p class="opara"><strong>mtgstrategy.net</strong> is a curated archive of the best Magic: The Gathering strategy writing ever published. The mission is simple: help you get better at the game, one article at a time.</p>
-    <p class="opara">The ranking is driven by votes — click the arrow on any article that made you a better player. If you know a great article that isn't here yet, email me at <a href="mailto:hello@mtgstrategy.net">hello@mtgstrategy.net</a>. The best thing you can do for the site is share it with anyone who loves the game.</p>
-    <p class="ocopy">Wizards of the Coast, Magic: The Gathering, and their logos are trademarks of Wizards of the Coast LLC. © 1995-2026 Wizards of the Coast. All rights reserved. mtgstrategy.net is not affiliated with, endorsed, or sponsored by Wizards of the Coast LLC.</p>
+<div class="wrap">
+  <div id="foot">
+    <a href="mailto:hello@mtgstrategy.net">hello@mtgstrategy.net</a>
+    <div class="fabout"><strong>mtgstrategy.net</strong> is a curated archive of the best Magic: The Gathering strategy writing ever published. The mission is simple: help you get better at the game, one article at a time. The ranking is driven by votes — click the arrow on any article that made you a better player. If you know a great article that isn't here yet, email me at <a href="mailto:hello@mtgstrategy.net">hello@mtgstrategy.net</a>. The best thing you can do for the site is share it with anyone who loves the game.</div>
+    <div class="fcopy">Not affiliated with Wizards of the Coast LLC. Magic: The Gathering® is a trademark of Wizards of the Coast LLC.</div>
   </div>
 </div>
-
+  
 <script>
 const SUPA_URL='https://owhsqvkqhqoqmvhprldw.supabase.co';
 const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im93aHNxdmtxaHFvcW12aHBybGR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4OTMyMTcsImV4cCI6MjA5MjQ2OTIxN30.BxVtOpZP_PohnJPjr2Tddj8ack8UwArZYBRLINoU-Wc';
