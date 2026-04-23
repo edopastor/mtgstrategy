@@ -23,9 +23,6 @@ button{font-family:inherit;cursor:pointer;}
 #bar-inner{max-width:900px;margin:0 auto;padding:0 16px;height:40px;display:flex;align-items:center;gap:8px;}
 .logo{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.05em;color:#fff;letter-spacing:-.3px;white-space:nowrap;text-decoration:none;}
 .logo em{color:rgba(255,255,255,.38);font-style:normal;}
-#barnav{display:flex;align-items:center;gap:2px;margin-left:6px;}
-.bnav{background:none;border:none;color:rgba(255,255,255,.6);font-size:.8em;padding:4px 7px;border-radius:3px;}
-.bnav:hover,.bnav.on{color:#fff;background:rgba(255,255,255,.15);}
 
 /* CATEGORY — mobile select */
 #catmob{width:100%;padding:7px 16px;border:none;border-bottom:1px solid #d8d8d0;background:#eeeeea;font-family:'IBM Plex Sans',sans-serif;font-size:.85em;color:#333;outline:none;display:block;}
@@ -34,7 +31,6 @@ button{font-family:inherit;cursor:pointer;}
 @media(min-width:600px){
   #bar-inner{height:38px;}
   .logo{font-size:1.1em;}
-  .bnav{font-size:.82em;}
   #catmob{display:none;}
   #catdesk{display:flex;background:#eeeeea;border-bottom:1px solid #d8d8d0;padding:4px 0;overflow-x:auto;scrollbar-width:none;}
   #catdesk::-webkit-scrollbar{display:none;}
@@ -73,9 +69,6 @@ button{font-family:inherit;cursor:pointer;}
 .rauth{background:none;border:none;color:#888;font-size:1em;padding:0;font-family:'IBM Plex Sans',sans-serif;}
 .rauth:hover{color:#000;text-decoration:underline;}
 .rsep{margin:0 3px;color:#ccc;}
-.rrep{background:none;border:none;font-size:.72em;color:#ccc;padding:0;margin-left:5px;font-family:'IBM Plex Sans',sans-serif;opacity:0;}
-.row:hover .rrep{opacity:1;}
-.rrep:hover{color:#888;}
 
 /* AUTHOR PAGE */
 #apage{display:none;padding-top:12px;}
@@ -317,10 +310,8 @@ function showA(name){
   view='author';
   document.getElementById('mpage').style.display='none';
   document.getElementById('apage').style.display='block';
-  document.getElementById('opage').style.display='none';
   document.getElementById('catmob').style.display='none';
   document.getElementById('catdesk').style.display='none';
-  document.querySelectorAll('.bnav').forEach(b=>b.classList.remove('on'));
   document.getElementById('aname').textContent=name;
   renderA(name);
   window.scrollTo(0,0);
@@ -335,23 +326,8 @@ function goArticles(){
   view='main';
   document.getElementById('mpage').style.display='';
   document.getElementById('apage').style.display='none';
-  document.getElementById('opage').style.display='none';
   document.getElementById('catmob').style.display='';
   document.getElementById('catdesk').style.display='';
-  document.querySelectorAll('.bnav').forEach(b=>b.classList.remove('on'));
-  document.getElementById('nart').classList.add('on');
-}
-  
-function goReadme(){
-  view='readme';
-  document.getElementById('mpage').style.display='none';
-  document.getElementById('apage').style.display='none';
-  document.getElementById('opage').style.display='block';
-  document.getElementById('catmob').style.display='none';
-  document.getElementById('catdesk').style.display='none';
-  document.querySelectorAll('.bnav').forEach(b=>b.classList.remove('on'));
-  document.getElementById('nrmd').classList.add('on');
-  window.scrollTo(0,0);
 }
 
 init();
