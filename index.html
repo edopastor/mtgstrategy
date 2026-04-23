@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MTG Strategy – The Greatest Magic: The Gathering Strategy Articles Ever Written</title>
-<meta name="description" content="A community-curated archive of the greatest Magic: The Gathering strategy articles ever written.">
+<meta name="description" content="A curated archive of the best Magic: The Gathering strategy articles ever written, ranked by the community.">
 <meta property="og:title" content="MTG Strategy – Greatest Magic Articles Ever Written">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.mtgstrategy.net">
@@ -18,56 +18,54 @@ body{font-family:'IBM Plex Sans',Verdana,sans-serif;font-size:15px;background:#f
 a{color:inherit;text-decoration:none;}
 button{font-family:inherit;cursor:pointer;}
 
-#bar{background:#111;display:flex;align-items:center;padding:0 10px;height:40px;gap:8px;}
+/* TOP BAR */
+#bar{background:#111;}
+#bar-inner{max-width:900px;margin:0 auto;padding:0 16px;height:40px;display:flex;align-items:center;gap:8px;}
 .logo{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.05em;color:#fff;letter-spacing:-.3px;white-space:nowrap;text-decoration:none;}
 .logo em{color:rgba(255,255,255,.38);font-style:normal;}
 #barnav{display:flex;align-items:center;gap:2px;margin-left:6px;}
 .bnav{background:none;border:none;color:rgba(255,255,255,.6);font-size:.8em;padding:4px 7px;border-radius:3px;}
 .bnav:hover,.bnav.on{color:#fff;background:rgba(255,255,255,.15);}
-.bsug{background:none;border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.7);font-size:.78em;padding:3px 9px;border-radius:3px;}
-.bsug:hover{color:#fff;border-color:rgba(255,255,255,.6);}
 
-#catmob{width:100%;padding:7px 10px;border:none;border-bottom:1px solid #d8d8d0;background:#eeeeea;font-family:'IBM Plex Sans',sans-serif;font-size:.85em;color:#333;outline:none;display:block;}
+/* CATEGORY — mobile select */
+#catmob{width:100%;padding:7px 16px;border:none;border-bottom:1px solid #d8d8d0;background:#eeeeea;font-family:'IBM Plex Sans',sans-serif;font-size:.85em;color:#333;outline:none;display:block;}
 #catdesk{display:none;}
 
 @media(min-width:600px){
-  #bar{padding:0 12px;height:38px;}
+  #bar-inner{height:38px;}
   .logo{font-size:1.1em;}
   .bnav{font-size:.82em;}
   #catmob{display:none;}
-  #catdesk{display:flex;background:#eeeeea;border-bottom:1px solid #d8d8d0;padding:4px 8px;gap:0;overflow-x:auto;scrollbar-width:none;}
+  #catdesk{display:flex;background:#eeeeea;border-bottom:1px solid #d8d8d0;padding:4px 0;overflow-x:auto;scrollbar-width:none;}
   #catdesk::-webkit-scrollbar{display:none;}
+  #catdesk-inner{max-width:900px;margin:0 auto;padding:0 12px;display:flex;gap:0;width:100%;}
   .ctab{background:none;border:none;font-size:.8em;color:#666;padding:3px 10px;border-radius:3px;white-space:nowrap;}
   .ctab:hover{color:#000;}
   .ctab.on{background:#111;color:#fff;}
 }
 
-#ctrl{display:flex;gap:6px;padding:7px 8px;border-bottom:1px solid #d8d8d0;background:#f6f6ef;flex-wrap:wrap;}
+/* MAIN WRAP */
+.wrap{max-width:900px;margin:0 auto;padding:0 16px;}
+
+/* CONTROLS */
+#ctrl{display:flex;gap:6px;padding:8px 0;border-bottom:1px solid #d8d8d0;flex-wrap:wrap;}
 #ctrl input[type=search]{flex:1;min-width:120px;padding:5px 8px;border:1px solid #ccc;border-radius:3px;font-size:.84em;font-family:'IBM Plex Sans',sans-serif;background:#fff;outline:none;}
 #ctrl input[type=search]:focus{border-color:#555;}
-#ctrl select{padding:5px 6px;border:1px solid #ccc;border-radius:3px;font-size:.82em;font-family:'IBM Plex Sans',sans-serif;background:#fff;outline:none;}
-#filtbtn{background:none;border:1px solid #ccc;color:#666;font-size:.8em;padding:5px 9px;border-radius:3px;}
-#filtbtn.on,#filtbtn:hover{border-color:#555;color:#000;}
+#ctrl select{padding:5px 6px;border:1px solid #ccc;border-radius:3px;font-size:.82em;font-family:'IBM Plex Sans',sans-serif;background:#fff;outline:none;max-width:180px;}
 
-#adv{display:none;padding:6px 8px;border-bottom:1px solid #d8d8d0;gap:8px;flex-wrap:wrap;align-items:flex-end;background:#f6f6ef;}
-#adv.on{display:flex;}
-#adv label{font-size:.72em;color:#888;display:block;margin-bottom:2px;text-transform:uppercase;letter-spacing:.4px;}
-#adv input,#adv select{padding:4px 7px;border:1px solid #ccc;border-radius:3px;font-size:.82em;font-family:'IBM Plex Sans',sans-serif;background:#fff;outline:none;}
-.abtn{padding:5px 11px;border-radius:3px;font-size:.79em;border:1px solid #ccc;}
-.abtn.p{background:#111;color:#fff;border-color:#111;}
+#cnt{padding:5px 0;font-size:.78em;color:#888;border-bottom:1px solid #d8d8d0;}
 
-#cnt{padding:5px 8px;font-size:.78em;color:#888;border-bottom:1px solid #d8d8d0;}
-
+/* ARTICLE ROWS */
 #list{padding:2px 0;}
-.row{display:flex;align-items:baseline;padding:6px 8px;gap:6px;border-bottom:1px solid #eeeee8;}
-.row:hover{background:#f0f0e8;}
+.row{display:flex;align-items:baseline;padding:6px 0;gap:6px;border-bottom:1px solid #eeeee8;}
+.row:hover{background:#f0f0e8;margin:0 -16px;padding:6px 16px;}
 .rnum{color:#bbb;font-size:.78em;width:20px;text-align:right;flex-shrink:0;}
-.hwrap{display:flex;align-items:center;gap:3px;flex-shrink:0;}
-.hbtn{background:none;border:none;font-size:.9em;padding:0;line-height:1;opacity:.28;transition:opacity .1s,transform .12s;}
-.hbtn:hover{opacity:.65;transform:scale(1.2);}
-.hbtn.on{opacity:1;}
-.hcnt{font-size:.74em;color:#aaa;min-width:8px;}
-.hbtn.on+.hcnt{color:#e05c8a;}
+.vwrap{display:flex;align-items:center;gap:3px;flex-shrink:0;}
+.vbtn{background:none;border:none;font-size:.85em;padding:0;line-height:1;color:#ccc;transition:color .1s,transform .12s;font-weight:700;}
+.vbtn:hover{color:#888;transform:scale(1.15);}
+.vbtn.on{color:#ff6600;}
+.vcnt{font-size:.74em;color:#aaa;min-width:12px;}
+.vbtn.on+.vcnt{color:#ff6600;}
 .rbody{flex:1;min-width:0;}
 .rtitle{font-size:.93em;font-weight:500;color:#000;}
 .rtitle:hover{text-decoration:underline;}
@@ -75,55 +73,54 @@ button{font-family:inherit;cursor:pointer;}
 .rauth{background:none;border:none;color:#888;font-size:1em;padding:0;font-family:'IBM Plex Sans',sans-serif;}
 .rauth:hover{color:#000;text-decoration:underline;}
 .rsep{margin:0 3px;color:#ccc;}
-.rrep{background:none;border:none;font-size:.72em;color:#ccc;padding:0;margin-left:5px;font-family:'IBM Plex Sans',sans-serif;}
-.row:hover .rrep,.rrep:focus{color:#aaa;}
-.rrep:hover{color:#e05c8a;}
+.rrep{background:none;border:none;font-size:.72em;color:#ccc;padding:0;margin-left:5px;font-family:'IBM Plex Sans',sans-serif;opacity:0;}
+.row:hover .rrep{opacity:1;}
+.rrep:hover{color:#888;}
 
-#apage{padding:10px 8px;display:none;}
-.abk{background:none;border:none;color:#555;font-size:.82em;padding:0;margin-bottom:10px;display:block;}
+/* AUTHOR PAGE */
+#apage{display:none;padding-top:12px;}
+.abk{background:none;border:none;color:#555;font-size:.82em;padding:0;margin-bottom:12px;display:block;}
 .abk:hover{text-decoration:underline;color:#000;}
 .aname{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.4em;margin-bottom:3px;}
 .astat{font-size:.8em;color:#888;margin-bottom:8px;}
 .astat b{color:#333;}
 .adiv{border-top:1px solid #d8d8d0;margin-bottom:4px;}
 
-#opage{padding:12px 8px;display:none;max-width:600px;}
-#opage h1{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.25em;margin-bottom:14px;}
-.osec{margin-bottom:16px;}
-.osec h2{font-size:.75em;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:#888;margin-bottom:5px;}
-.osec p,.osec li{font-size:.86em;color:#444;line-height:1.65;margin-bottom:4px;}
-.osec ul{margin-left:16px;}
-.osec a{color:#333;text-decoration:underline;}
+/* README PAGE */
+#opage{display:none;padding:16px 0;max-width:580px;}
+#opage h1{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.2em;margin-bottom:14px;}
+.opara{font-size:.88em;color:#333;line-height:1.75;margin-bottom:12px;}
+.opara a{color:#555;text-decoration:underline;}
+.ocopy{font-size:.78em;color:#999;line-height:1.65;margin-top:20px;padding-top:16px;border-top:1px solid #d8d8d0;font-style:italic;}
 
+/* MODAL */
 .mover{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:99;align-items:center;justify-content:center;padding:14px;}
 .mover.on{display:flex;}
-.mbox{background:#fff;border:1px solid #ccc;border-radius:5px;padding:16px;width:min(460px,100%);box-shadow:0 4px 20px rgba(0,0,0,.15);}
+.mbox{background:#fff;border:1px solid #ccc;border-radius:5px;padding:16px;width:min(420px,100%);box-shadow:0 4px 20px rgba(0,0,0,.15);}
 .mbox h2{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:.95em;margin-bottom:10px;}
-.mtabs{display:flex;gap:4px;margin-bottom:12px;}
-.mtab{background:#f6f6ef;border:1px solid #ccc;color:#666;border-radius:3px;padding:4px 11px;font-size:.8em;font-family:'IBM Plex Sans',sans-serif;}
-.mtab.on{background:#111;color:#fff;border-color:#111;}
-.mbox iframe{width:100%;height:440px;border:none;border-radius:3px;}
-.mhint{font-size:.83em;color:#444;line-height:1.65;}
+.mhint{font-size:.84em;color:#444;line-height:1.7;}
 .mhint a{color:#333;text-decoration:underline;}
-.mbtns{display:flex;gap:6px;justify-content:flex-end;margin-top:12px;}
-.mbtn{padding:5px 12px;border-radius:3px;font-size:.8em;border:1px solid #ccc;font-family:'IBM Plex Sans',sans-serif;}
-.mbtn.p{background:#111;color:#fff;border-color:#111;}
+.mbtns{display:flex;justify-content:flex-end;margin-top:14px;}
+.mbtn{padding:5px 14px;border-radius:3px;font-size:.8em;border:1px solid #ccc;font-family:'IBM Plex Sans',sans-serif;background:#111;color:#fff;border-color:#111;}
 
-#foot{padding:10px 8px;font-size:.75em;color:#999;border-top:1px solid #d8d8d0;line-height:1.9;}
-#foot a{color:#666;text-decoration:underline;}
-#coff{background:#eeeeea;border-top:1px solid #d8d8d0;padding:8px;text-align:center;font-size:.78em;color:#666;}
-#coff a.cb{background:#ffdd00;color:#1a1200;border-radius:20px;padding:3px 11px;font-size:.85em;font-weight:700;text-decoration:none;margin-left:7px;display:inline-block;}
-#coff a.cb:hover{background:#ffe033;}
+/* FOOTER */
+#foot{padding:10px 0;font-size:.75em;color:#999;border-top:1px solid #d8d8d0;margin-top:8px;line-height:1.9;}
+#foot a{color:#777;text-decoration:underline;}
+.fcopy{font-size:.72em;color:#bbb;margin-top:4px;line-height:1.6;}
+
+/* LOADING */
+.loading{padding:20px 0;color:#888;font-size:.85em;}
 </style>
 </head>
 <body>
 
 <div id="bar">
-  <a class="logo" href="#" onclick="goArticles();return false;">mtgstrategy<em>.net</em></a>
-  <div id="barnav">
-    <button class="bnav on" id="nart" onclick="goArticles()">articles</button>
-    <button class="bnav" id="nabt" onclick="goAbout()">about</button>
-    <button class="bsug" onclick="openM()">suggest</button>
+  <div id="bar-inner">
+    <a class="logo" href="#" onclick="goArticles();return false;">mtgstrategy<em>.net</em></a>
+    <div id="barnav">
+      <button class="bnav on" id="nart" onclick="goArticles()">articles</button>
+      <button class="bnav" id="nrmd" onclick="goReadme()">readme</button>
+    </div>
   </div>
 </div>
 
@@ -138,125 +135,149 @@ button{font-family:inherit;cursor:pointer;}
 </select>
 
 <div id="catdesk">
-  <button class="ctab on" data-c="all" onclick="setCatD('all',this)">all</button>
-  <button class="ctab" data-c="theory" onclick="setCatD('theory',this)">theory</button>
-  <button class="ctab" data-c="deckbuilding" onclick="setCatD('deckbuilding',this)">deckbuilding</button>
-  <button class="ctab" data-c="limited" onclick="setCatD('limited',this)">limited</button>
-  <button class="ctab" data-c="tournament" onclick="setCatD('tournament',this)">tournament</button>
-  <button class="ctab" data-c="mental" onclick="setCatD('mental',this)">mental game</button>
-  <button class="ctab" data-c="history" onclick="setCatD('history',this)">history & culture</button>
+  <div id="catdesk-inner">
+    <button class="ctab on" data-c="all" onclick="setCatD('all',this)">all</button>
+    <button class="ctab" data-c="theory" onclick="setCatD('theory',this)">theory</button>
+    <button class="ctab" data-c="deckbuilding" onclick="setCatD('deckbuilding',this)">deckbuilding</button>
+    <button class="ctab" data-c="limited" onclick="setCatD('limited',this)">limited</button>
+    <button class="ctab" data-c="tournament" onclick="setCatD('tournament',this)">tournament</button>
+    <button class="ctab" data-c="mental" onclick="setCatD('mental',this)">mental game</button>
+    <button class="ctab" data-c="history" onclick="setCatD('history',this)">history & culture</button>
+  </div>
 </div>
 
+<!-- ARTICLES -->
 <div id="mpage">
-  <div id="ctrl">
-    <input type="search" id="q" placeholder="search title or author…" oninput="render()">
-    <select id="srt" onchange="render()">
-      <option value="hearts">most liked</option>
-      <option value="alpha">title a–z</option>
-      <option value="author">author a–z</option>
-    </select>
-    <button id="filtbtn" onclick="toggleAdv()">filters</button>
-  </div>
-  <div id="adv">
-    <div><label>Author</label><input type="text" id="fa" placeholder="e.g. Flores" oninput="render()"></div>
-    <div><label>Source</label>
-      <select id="fs" onchange="render()">
-        <option value="">any</option>
-        <option>StarCityGames</option>
-        <option>ChannelFireball</option>
-        <option>Wizards of the Coast</option>
-        <option>The Magic Dojo</option>
-        <option>TCGplayer</option>
-        <option>Substack</option>
+  <div class="wrap">
+    <div id="ctrl">
+      <input type="search" id="q" placeholder="search title or author…" oninput="render()">
+      <select id="authorFilter" onchange="render()">
+        <option value="">all authors</option>
       </select>
     </div>
-    <div style="display:flex;gap:5px;align-items:flex-end;">
-      <button class="abtn p" onclick="render()">apply</button>
-      <button class="abtn" onclick="resetAdv()">reset</button>
-    </div>
+    <div id="cnt"></div>
+    <div id="list"><p class="loading">loading…</p></div>
   </div>
-  <div id="cnt"></div>
-  <div id="list"></div>
 </div>
 
+<!-- AUTHOR PAGE -->
 <div id="apage">
-  <button class="abk" onclick="goArticles()">← back</button>
-  <div class="aname" id="aname"></div>
-  <div class="astat" id="astat"></div>
-  <div class="adiv"></div>
-  <div id="alist"></div>
+  <div class="wrap">
+    <button class="abk" onclick="goArticles()">← back</button>
+    <div class="aname" id="aname"></div>
+    <div class="astat" id="astat"></div>
+    <div class="adiv"></div>
+    <div id="alist"></div>
+  </div>
 </div>
 
+<!-- README -->
 <div id="opage">
-  <h1>About mtgstrategy.net</h1>
-  <div class="osec">
-    <h2>What is this?</h2>
-    <p>A community-curated link repository. It doesn't host articles — it collects and links to the best MTG strategy writing ever published, wherever it still lives.</p>
-  </div>
-  <div class="osec">
-    <h2>Why does it exist?</h2>
-    <p>Magic strategy writing had a golden age from the mid-1990s through the 2010s. Much of it is now scattered, paywalled, or gone. Great articles by Zvi, Flores, Karsten, Reid Duke, PV, Chapin and others deserve to be easy to find.</p>
-  </div>
-  <div class="osec">
-    <h2>How do likes work?</h2>
-    <p>Tap ❤️ on any article. One like per article, toggle-able. Stored in your browser.</p>
-  </div>
-  <div class="osec">
-    <h2>How can I help?</h2>
-    <ul>
-      <li>Suggest articles we missed — use the suggest button</li>
-      <li>Report broken links or submit better URLs</li>
-      <li>Share on Reddit (r/magicTCG, r/spikes) or Discord</li>
-      <li><a href="https://www.buymeacoffee.com/mtgstrategy" target="_blank" rel="noopener">Buy us a coffee ☕</a></li>
-    </ul>
-  </div>
-  <div class="osec">
-    <h2>Who runs this?</h2>
-    <p>A small group of Magic players. Not affiliated with Wizards of the Coast, StarCityGames, or ChannelFireball.</p>
-    <p>Magic: The Gathering® is a trademark of Wizards of the Coast LLC.</p>
-    <p><a href="mailto:hello@mtgstrategy.net">hello@mtgstrategy.net</a></p>
+  <div class="wrap">
+    <h1>readme</h1>
+    <p class="opara"><strong>mtgstrategy.net</strong> is a curated archive of the best Magic: The Gathering strategy writing ever published. The mission is simple: help you get better at the game, one article at a time.</p>
+    <p class="opara">The ranking is driven by votes — click the arrow on any article that made you a better player. If you know a great article that isn't here yet, email me at <a href="mailto:hello@mtgstrategy.net">hello@mtgstrategy.net</a>. The best thing you can do for the site is share it with anyone who loves the game.</p>
+    <p class="ocopy">Wizards of the Coast, Magic: The Gathering, and their logos are trademarks of Wizards of the Coast LLC. © 1995-2026 Wizards of the Coast. All rights reserved. mtgstrategy.net is not affiliated with, endorsed, or sponsored by Wizards of the Coast LLC.</p>
   </div>
 </div>
 
-<div id="foot">
-  mtgstrategy.net — not affiliated with Wizards of the Coast ·
-  <a href="mailto:hello@mtgstrategy.net">hello@mtgstrategy.net</a> ·
-  <a href="#" onclick="openM();return false;">suggest / report</a>
-</div>
-<div id="coff">
-  mtgstrategy.net is free and ad-free.
-  <a class="cb" href="https://www.buymeacoffee.com/mtgstrategy" target="_blank" rel="noopener">☕ buy us a coffee</a>
-</div>
-
+<!-- MODAL -->
 <div class="mover" id="modal" onclick="closeOut(event)">
   <div class="mbox">
-    <h2>Suggest / Report</h2>
-    <div class="mtabs">
-      <button class="mtab on" onclick="switchMT('form',this)">📋 form</button>
-      <button class="mtab" onclick="switchMT('email',this)">✉️ email</button>
+    <h2>suggest / report</h2>
+    <p class="mhint">
+      Email <a href="mailto:hello@mtgstrategy.net">hello@mtgstrategy.net</a>:<br><br>
+      <strong>New article:</strong> Title · Author · URL · Category<br>
+      <strong>Broken link:</strong> Article title · what's wrong<br>
+      <strong>Better link:</strong> Article title · working URL
+    </p>
+    <div class="mbtns">
+      <button class="mbtn" onclick="closeM()">close</button>
     </div>
-    <div id="mForm">
-      <iframe src="https://docs.google.com/forms/d/e/REPLACE_WITH_YOUR_FORM_ID/viewform?embedded=true" title="Suggest"></iframe>
-      <p style="font-size:.72em;color:#aaa;margin-top:4px;">Can't see it? <a href="https://docs.google.com/forms/d/e/REPLACE_WITH_YOUR_FORM_ID/viewform" target="_blank" style="color:#555;">open in new tab ↗</a></p>
-    </div>
-    <div id="mEmail" style="display:none">
-      <p class="mhint">
-        Email <a href="mailto:hello@mtgstrategy.net">hello@mtgstrategy.net</a>:<br><br>
-        <strong>New article:</strong> Title · Author · URL · Category<br>
-        <strong>Broken link:</strong> Article title · what's wrong<br>
-        <strong>Better link:</strong> Article title · working URL
-      </p>
-      <div class="mbtns">
-        <button class="mbtn" onclick="closeM()">close</button>
-        <button class="mbtn p" onclick="openEmail()">open email</button>
-      </div>
-    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div id="foot">
+    <a href="mailto:hello@mtgstrategy.net">hello@mtgstrategy.net</a> ·
+    <a href="#" onclick="openM();return false;">suggest / report</a>
+    <div class="fcopy">Wizards of the Coast, Magic: The Gathering, and their logos are trademarks of Wizards of the Coast LLC. © 1995-2026 Wizards of the Coast. All rights reserved. mtgstrategy.net is not affiliated with, endorsed, or sponsored by Wizards of the Coast LLC.</div>
   </div>
 </div>
 
 <script>
+const SUPA_URL='https://owhsqvkqhqoqmvhprldw.supabase.co';
+const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im93aHNxdmtxaHFvcW12aHBybGR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4OTMyMTcsImV4cCI6MjA5MjQ2OTIxN30.BxVtOpZP_PohnJPjr2Tddj8ack8UwArZYBRLINoU-Wc';
+
 const CATS={theory:'theory',deckbuilding:'deckbuilding',limited:'limited',tournament:'tournament',mental:'mental game',history:'history & culture'};
-let A=[], H={}, cat='all', view='main';
+
+let A=[], votes={}, myVotes={}, cat='all', view='main';
+
+// Generate or retrieve a browser fingerprint
+function getFingerprint(){
+  let fp=localStorage.getItem('mtg_fp');
+  if(!fp){
+    fp=Math.random().toString(36).slice(2)+Date.now().toString(36);
+    localStorage.setItem('mtg_fp',fp);
+  }
+  return fp;
+}
+const FP=getFingerprint();
+
+// Supabase helpers
+async function sbFetch(path,opts={}){
+  const r=await fetch(SUPA_URL+'/rest/v1/'+path,{
+    headers:{
+      'apikey':SUPA_KEY,
+      'Authorization':'Bearer '+SUPA_KEY,
+      'Content-Type':'application/json',
+      'Prefer': opts.prefer||'',
+      ...opts.headers
+    },
+    method:opts.method||'GET',
+    body:opts.body?JSON.stringify(opts.body):undefined
+  });
+  if(r.status===204||r.status===201) return null;
+  return r.json();
+}
+
+async function loadVotes(){
+  // Get all vote counts grouped by article_id
+  const data=await sbFetch('votes?select=article_id');
+  if(data&&Array.isArray(data)){
+    data.forEach(row=>{
+      votes[row.article_id]=(votes[row.article_id]||0)+1;
+    });
+  }
+  // Get this browser's votes
+  const mine=await sbFetch('votes?fingerprint=eq.'+encodeURIComponent(FP)+'&select=article_id');
+  if(mine&&Array.isArray(mine)){
+    mine.forEach(row=>{ myVotes[row.article_id]=true; });
+  }
+}
+
+async function castVote(id){
+  if(myVotes[id]){
+    // Remove vote
+    await sbFetch('votes?article_id=eq.'+id+'&fingerprint=eq.'+encodeURIComponent(FP),{
+      method:'DELETE',
+      prefer:'return=minimal'
+    });
+    delete myVotes[id];
+    votes[id]=Math.max(0,(votes[id]||1)-1);
+  } else {
+    // Add vote
+    await sbFetch('votes',{
+      method:'POST',
+      prefer:'return=minimal',
+      body:{article_id:id,fingerprint:FP}
+    });
+    myVotes[id]=true;
+    votes[id]=(votes[id]||0)+1;
+  }
+  if(view==='main') render();
+  else renderA(document.getElementById('aname').textContent);
+}
 
 async function init(){
   try{
@@ -267,19 +288,22 @@ async function init(){
     document.getElementById('list').innerHTML='<p style="padding:16px;color:#888;font-size:.85em;">Could not load articles.json: '+e.message+'</p>';
     return;
   }
-  try{ const v=localStorage.getItem('mtg_h'); if(v) H=JSON.parse(v); }catch(e){}
+  await loadVotes();
+  buildAuthorFilter();
   render();
 }
 
-const saveH=()=>{ try{ localStorage.setItem('mtg_h',JSON.stringify(H)); }catch(e){}};
-const getH=id=>H[id]||0;
-
-function toggleH(id,e){
-  e.preventDefault();e.stopPropagation();
-  H[id]?delete H[id]:H[id]=1;
-  saveH();
-  view==='main'?render():renderA(document.getElementById('aname').textContent);
+function buildAuthorFilter(){
+  const authors=[...new Set(A.map(a=>a.author))].sort();
+  const sel=document.getElementById('authorFilter');
+  authors.forEach(au=>{
+    const o=document.createElement('option');
+    o.value=au;o.textContent=au;
+    sel.appendChild(o);
+  });
 }
+
+function getV(id){return votes[id]||0;}
 
 function setCat(c){
   cat=c;
@@ -294,42 +318,27 @@ function setCatD(c,el){
   render();
 }
 
-function toggleAdv(){
-  document.getElementById('adv').classList.toggle('on');
-  document.getElementById('filtbtn').classList.toggle('on');
-}
-function resetAdv(){
-  ['fa','fs'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
-  render();
-}
-
 function getList(){
   const q=document.getElementById('q').value.toLowerCase().trim();
-  const srt=document.getElementById('srt').value;
-  const fa=(document.getElementById('fa')?.value||'').toLowerCase().trim();
-  const fs=document.getElementById('fs')?.value||'';
+  const au=document.getElementById('authorFilter').value;
   let L=A.filter(a=>{
     if(cat!=='all'&&a.cat!==cat)return false;
     if(q&&!a.title.toLowerCase().includes(q)&&!a.author.toLowerCase().includes(q))return false;
-    if(fa&&!a.author.toLowerCase().includes(fa))return false;
-    if(fs&&a.src!==fs)return false;
+    if(au&&a.author!==au)return false;
     return true;
   });
-  if(srt==='hearts')L.sort((a,b)=>getH(b.id)-getH(a.id)||a.title.localeCompare(b.title));
-  else if(srt==='alpha')L.sort((a,b)=>a.title.localeCompare(b.title));
-  else L.sort((a,b)=>a.author.localeCompare(b.author)||a.title.localeCompare(b.title));
+  L.sort((a,b)=>getV(b.id)-getV(a.id)||a.title.localeCompare(b.title));
   return L;
 }
 
 function rowHTML(a,i){
-  const liked=H[a.id];
-  const h=getH(a.id);
+  const v=getV(a.id), on=myVotes[a.id];
   const esc=a.author.replace(/'/g,"\\'");
   return `<div class="row">
     <span class="rnum">${i+1}.</span>
-    <span class="hwrap">
-      <button class="hbtn${liked?' on':''}" onclick="toggleH(${a.id},event)" aria-pressed="${!!liked}">❤️</button>
-      <span class="hcnt">${h||''}</span>
+    <span class="vwrap">
+      <button class="vbtn${on?' on':''}" onclick="castVote(${a.id})" aria-pressed="${!!on}">▲</button>
+      <span class="vcnt">${v||''}</span>
     </span>
     <span class="rbody">
       <a class="rtitle" href="${a.orig}" target="_blank" rel="noopener">${a.title}</a>
@@ -347,7 +356,7 @@ function render(){
   document.getElementById('cnt').textContent=L.length+' article'+(L.length!==1?'s':'');
   document.getElementById('list').innerHTML=L.length
     ?L.map((a,i)=>rowHTML(a,i)).join('')
-    :'<p style="padding:20px 8px;color:#888;font-size:.85em;">No articles match.</p>';
+    :'<p style="padding:20px 0;color:#888;font-size:.85em;">No articles match.</p>';
 }
 
 function showA(name){
@@ -363,8 +372,8 @@ function showA(name){
   window.scrollTo(0,0);
 }
 function renderA(name){
-  const L=A.filter(a=>a.author===name).sort((a,b)=>getH(b.id)-getH(a.id)||a.title.localeCompare(b.title));
-  document.getElementById('astat').innerHTML=`<b>${L.length}</b> article${L.length!==1?'s':''} · <b>${L.reduce((s,a)=>s+getH(a.id),0)}</b> ❤️`;
+  const L=A.filter(a=>a.author===name).sort((a,b)=>getV(b.id)-getV(a.id)||a.title.localeCompare(b.title));
+  document.getElementById('astat').innerHTML=`<b>${L.length}</b> article${L.length!==1?'s':''} · <b>${L.reduce((s,a)=>s+getV(a.id),0)}</b> votes`;
   document.getElementById('alist').innerHTML=L.map((a,i)=>rowHTML(a,i)).join('');
 }
 
@@ -378,31 +387,21 @@ function goArticles(){
   document.querySelectorAll('.bnav').forEach(b=>b.classList.remove('on'));
   document.getElementById('nart').classList.add('on');
 }
-function goAbout(){
-  view='about';
+function goReadme(){
+  view='readme';
   document.getElementById('mpage').style.display='none';
   document.getElementById('apage').style.display='none';
   document.getElementById('opage').style.display='';
   document.getElementById('catmob').style.display='none';
   document.getElementById('catdesk').style.display='none';
   document.querySelectorAll('.bnav').forEach(b=>b.classList.remove('on'));
-  document.getElementById('nabt').classList.add('on');
+  document.getElementById('nrmd').classList.add('on');
   window.scrollTo(0,0);
 }
 
 function openM(){document.getElementById('modal').classList.add('on');}
 function closeM(){document.getElementById('modal').classList.remove('on');}
 function closeOut(e){if(e.target===document.getElementById('modal'))closeM();}
-function switchMT(tab,el){
-  document.getElementById('mForm').style.display=tab==='form'?'':'none';
-  document.getElementById('mEmail').style.display=tab==='email'?'':'none';
-  document.querySelectorAll('.mtab').forEach(b=>b.classList.remove('on'));
-  el.classList.add('on');
-}
-function openEmail(){
-  window.location.href='mailto:hello@mtgstrategy.net?subject=MTG%20Strategy%20Feedback&body=Type:%0A%0ADetails:%0A';
-  closeM();
-}
 
 init();
 </script>
