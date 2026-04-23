@@ -93,16 +93,6 @@ button{font-family:inherit;cursor:pointer;}
 .opara a{color:#555;text-decoration:underline;}
 .ocopy{font-size:.78em;color:#999;line-height:1.65;margin-top:20px;padding-top:16px;border-top:1px solid #d8d8d0;font-style:italic;}
 
-/* MODAL */
-.mover{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:99;align-items:center;justify-content:center;padding:14px;}
-.mover.on{display:flex;}
-.mbox{background:#fff;border:1px solid #ccc;border-radius:5px;padding:16px;width:min(420px,100%);box-shadow:0 4px 20px rgba(0,0,0,.15);}
-.mbox h2{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:.95em;margin-bottom:10px;}
-.mhint{font-size:.84em;color:#444;line-height:1.7;}
-.mhint a{color:#333;text-decoration:underline;}
-.mbtns{display:flex;justify-content:flex-end;margin-top:14px;}
-.mbtn{padding:5px 14px;border-radius:3px;font-size:.8em;border:1px solid #ccc;font-family:'IBM Plex Sans',sans-serif;background:#111;color:#fff;border-color:#111;}
-
 /* FOOTER */
 #foot{padding:10px 0;font-size:.75em;color:#999;border-top:1px solid #d8d8d0;margin-top:8px;line-height:1.9;}
 #foot a{color:#777;text-decoration:underline;}
@@ -181,26 +171,9 @@ button{font-family:inherit;cursor:pointer;}
   </div>
 </div>
 
-<!-- MODAL -->
-<div class="mover" id="modal" onclick="closeOut(event)">
-  <div class="mbox">
-    <h2>suggest / report</h2>
-    <p class="mhint">
-      Email <a href="mailto:hello@mtgstrategy.net">hello@mtgstrategy.net</a>:<br><br>
-      <strong>New article:</strong> Title · Author · URL · Category<br>
-      <strong>Broken link:</strong> Article title · what's wrong<br>
-      <strong>Better link:</strong> Article title · working URL
-    </p>
-    <div class="mbtns">
-      <button class="mbtn" onclick="closeM()">close</button>
-    </div>
-  </div>
-</div>
-
 <div class="wrap">
   <div id="foot">
     <a href="mailto:hello@mtgstrategy.net">hello@mtgstrategy.net</a> ·
-    <a href="#" onclick="openM();return false;">suggest / report</a>
     <div class="fcopy">Wizards of the Coast, Magic: The Gathering, and their logos are trademarks of Wizards of the Coast LLC. © 1995-2026 Wizards of the Coast. All rights reserved. mtgstrategy.net is not affiliated with, endorsed, or sponsored by Wizards of the Coast LLC.</div>
   </div>
 </div>
@@ -399,10 +372,6 @@ function goReadme(){
   document.getElementById('nrmd').classList.add('on');
   window.scrollTo(0,0);
 }
-
-function openM(){document.getElementById('modal').classList.add('on');}
-function closeM(){document.getElementById('modal').classList.remove('on');}
-function closeOut(e){if(e.target===document.getElementById('modal'))closeM();}
 
 init();
 </script>
