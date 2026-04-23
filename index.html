@@ -298,13 +298,12 @@ function getList(){
 }
 
 function rowHTML(a,i){
-  const v=getV(a.id), on=myVotes[a.id];
-  const esc=a.author.replace(/'/g,"\\'");
+  const v=getV(a.id), on=myVotes[a.id], top=i<10;  const esc=a.author.replace(/'/g,"\\'");
   return `<div class="row">
     <span class="rnum">${i+1}.</span>
     <span class="vwrap">
-      <button class="vbtn${on?' on':''}" onclick="castVote(${a.id})" aria-pressed="${!!on}">▲</button>
-      <span class="vcnt">${v||''}</span>
+      <button class="vbtn${(on||top)?' on':''}" onclick="castVote(${a.id})" aria-pressed="${!!on}">▲</button>
+<span class="vcnt">${top?v:''}</span>
     </span>
     <span class="rbody">
       <a class="rtitle" href="${a.orig}" target="_blank" rel="noopener">${a.title}</a>
