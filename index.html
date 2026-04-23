@@ -21,23 +21,24 @@ button{font-family:inherit;cursor:pointer;}
 /* TOP BAR */
 #bar{background:#111;}
 #bar-inner{max-width:900px;margin:0 auto;padding:0 16px;height:40px;display:flex;align-items:center;gap:8px;}
-.logo{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.05em;color:#fff;letter-spacing:-.3px;white-space:nowrap;text-decoration:none;}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.05em;color:#fff;letter-spacing:-.3px;white-space:nowrap;text-decoration:none;flex-shrink:0;}
 .logo em{color:rgba(255,255,255,.38);font-style:normal;}
 
 /* CATEGORY — mobile select */
 #catmob{width:100%;padding:7px 16px;border:none;border-bottom:1px solid #d8d8d0;background:#eeeeea;font-family:'IBM Plex Sans',sans-serif;font-size:.85em;color:#333;outline:none;display:block;}
+
+/* CATEGORY — desktop tabs (inside bar) */
 #catdesk{display:none;}
 
 @media(min-width:600px){
-  #bar-inner{height:38px;}
-  .logo{font-size:1.1em;}
+  #bar-inner{height:38px;gap:0;}
+  .logo{font-size:1.1em;margin-right:12px;}
   #catmob{display:none;}
-  #catdesk{display:flex;background:#eeeeea;border-bottom:1px solid #d8d8d0;padding:4px 0;overflow-x:auto;scrollbar-width:none;}
+  #catdesk{display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1;}
   #catdesk::-webkit-scrollbar{display:none;}
-  #catdesk-inner{max-width:900px;margin:0 auto;padding:0 12px;display:flex;gap:0;width:100%;}
-  .ctab{background:none;border:none;font-size:.8em;color:#666;padding:3px 10px;border-radius:3px;white-space:nowrap;}
-  .ctab:hover{color:#000;}
-  .ctab.on{background:#111;color:#fff;}
+  .ctab{background:none;border:none;font-size:.8em;color:rgba(255,255,255,.55);padding:3px 9px;border-radius:3px;white-space:nowrap;}
+  .ctab:hover{color:#fff;}
+  .ctab.on{background:rgba(255,255,255,.15);color:#fff;}
 }
 
 /* MAIN WRAP */
@@ -95,6 +96,15 @@ button{font-family:inherit;cursor:pointer;}
 <div id="bar">
   <div id="bar-inner">
     <a class="logo" href="#" onclick="goArticles();return false;">mtgstrategy<em>.net</em></a>
+    <div id="catdesk">
+      <button class="ctab on" data-c="all" onclick="setCatD('all',this)">all</button>
+      <button class="ctab" data-c="theory" onclick="setCatD('theory',this)">theory</button>
+      <button class="ctab" data-c="deckbuilding" onclick="setCatD('deckbuilding',this)">deckbuilding</button>
+      <button class="ctab" data-c="limited" onclick="setCatD('limited',this)">limited</button>
+      <button class="ctab" data-c="tournament" onclick="setCatD('tournament',this)">tournament</button>
+      <button class="ctab" data-c="mental" onclick="setCatD('mental',this)">mental game</button>
+      <button class="ctab" data-c="history" onclick="setCatD('history',this)">history & culture</button>
+    </div>
   </div>
 </div>
 
@@ -107,18 +117,6 @@ button{font-family:inherit;cursor:pointer;}
   <option value="mental">mental game</option>
   <option value="history">history & culture</option>
 </select>
-
-<div id="catdesk">
-  <div id="catdesk-inner">
-    <button class="ctab on" data-c="all" onclick="setCatD('all',this)">all</button>
-    <button class="ctab" data-c="theory" onclick="setCatD('theory',this)">theory</button>
-    <button class="ctab" data-c="deckbuilding" onclick="setCatD('deckbuilding',this)">deckbuilding</button>
-    <button class="ctab" data-c="limited" onclick="setCatD('limited',this)">limited</button>
-    <button class="ctab" data-c="tournament" onclick="setCatD('tournament',this)">tournament</button>
-    <button class="ctab" data-c="mental" onclick="setCatD('mental',this)">mental game</button>
-    <button class="ctab" data-c="history" onclick="setCatD('history',this)">history & culture</button>
-  </div>
-</div>
 
 <!-- ARTICLES -->
 <div id="mpage">
@@ -152,16 +150,15 @@ button{font-family:inherit;cursor:pointer;}
     <div class="fcopy">Not affiliated with Wizards of the Coast LLC. Magic: The Gathering® is a trademark of Wizards of the Coast LLC.</div>
   </div>
 </div>
-  
+
 <script>
 const SUPA_URL='https://owhsqvkqhqoqmvhprldw.supabase.co';
 const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im93aHNxdmtxaHFvcW12aHBybGR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4OTMyMTcsImV4cCI6MjA5MjQ2OTIxN30.BxVtOpZP_PohnJPjr2Tddj8ack8UwArZYBRLINoU-Wc';
 
 const CATS={theory:'theory',deckbuilding:'deckbuilding',limited:'limited',tournament:'tournament',mental:'mental game',history:'history & culture'};
 
-let A=[], votes={}, myVotes={}, cat='all', view='main';
+let A=[], votes={}, myVotes={}, cat='all';
 
-// Generate or retrieve a browser fingerprint
 function getFingerprint(){
   let fp=localStorage.getItem('mtg_fp');
   if(!fp){
@@ -172,14 +169,13 @@ function getFingerprint(){
 }
 const FP=getFingerprint();
 
-// Supabase helpers
 async function sbFetch(path,opts={}){
   const r=await fetch(SUPA_URL+'/rest/v1/'+path,{
     headers:{
       'apikey':SUPA_KEY,
       'Authorization':'Bearer '+SUPA_KEY,
       'Content-Type':'application/json',
-      'Prefer': opts.prefer||'',
+      'Prefer':opts.prefer||'',
       ...opts.headers
     },
     method:opts.method||'GET',
@@ -190,14 +186,12 @@ async function sbFetch(path,opts={}){
 }
 
 async function loadVotes(){
-  // Get all vote counts grouped by article_id
   const data=await sbFetch('votes?select=article_id');
   if(data&&Array.isArray(data)){
     data.forEach(row=>{
       votes[row.article_id]=(votes[row.article_id]||0)+1;
     });
   }
-  // Get this browser's votes
   const mine=await sbFetch('votes?fingerprint=eq.'+encodeURIComponent(FP)+'&select=article_id');
   if(mine&&Array.isArray(mine)){
     mine.forEach(row=>{ myVotes[row.article_id]=true; });
@@ -206,25 +200,21 @@ async function loadVotes(){
 
 async function castVote(id){
   if(myVotes[id]){
-    // Remove vote
     await sbFetch('votes?article_id=eq.'+id+'&fingerprint=eq.'+encodeURIComponent(FP),{
-      method:'DELETE',
-      prefer:'return=minimal'
+      method:'DELETE',prefer:'return=minimal'
     });
     delete myVotes[id];
     votes[id]=Math.max(0,(votes[id]||1)-1);
   } else {
-    // Add vote
     await sbFetch('votes',{
-      method:'POST',
-      prefer:'return=minimal',
+      method:'POST',prefer:'return=minimal',
       body:{article_id:id,fingerprint:FP}
     });
     myVotes[id]=true;
     votes[id]=(votes[id]||0)+1;
   }
-  if(view==='main') render();
-  else renderA(document.getElementById('aname').textContent);
+  if(document.getElementById('apage').style.display==='block') renderA(document.getElementById('aname').textContent);
+  else render();
 }
 
 async function init(){
@@ -280,19 +270,19 @@ function getList(){
 }
 
 function rowHTML(a,i){
-  const v=getV(a.id), on=myVotes[a.id], top=i<10;  const esc=a.author.replace(/'/g,"\\'");
+  const v=getV(a.id), on=myVotes[a.id], top=i<10;
+  const esc=a.author.replace(/'/g,"\\'");
   return `<div class="row">
     <span class="rnum">${i+1}.</span>
     <span class="vwrap">
       <button class="vbtn${(on||top)?' on':''}" onclick="castVote(${a.id})" aria-pressed="${!!on}">▲</button>
-<span class="vcnt">${top?v:''}</span>
+      <span class="vcnt">${top?v:''}</span>
     </span>
     <span class="rbody">
       <a class="rtitle" href="${a.orig}" target="_blank" rel="noopener">${a.title}</a>
       <div class="rmeta">
         <button class="rauth" onclick="showA('${esc}')">${a.author}</button>
         <span class="rsep">·</span>${CATS[a.cat]||a.cat}
-        <button class="rrep" onclick="openM()">⚑</button>
       </div>
     </span>
   </div>`;
@@ -307,7 +297,6 @@ function render(){
 }
 
 function showA(name){
-  view='author';
   document.getElementById('mpage').style.display='none';
   document.getElementById('apage').style.display='block';
   document.getElementById('catmob').style.display='none';
@@ -323,7 +312,6 @@ function renderA(name){
 }
 
 function goArticles(){
-  view='main';
   document.getElementById('mpage').style.display='';
   document.getElementById('apage').style.display='none';
   document.getElementById('catmob').style.display='';
