@@ -141,7 +141,7 @@ button{font-family:inherit;cursor:pointer;}
   </div>
 </div>
 
-<div class="wrap">
+<div class="wrap" id="footwrap" style="display:none">
   <div id="foot">
     <a href="https://github.com/edopastor/mtgstrategy" target="_blank" rel="noopener">suggest an article on GitHub</a>
     <div class="fabout">Get better at Magic: The Gathering with the best strategy articles ever written. <strong>mtgstrategy.net</strong> is a community-ranked archive of essential MTG reading — theory, deckbuilding, limited, tournament prep and more. The ranking is driven by votes — click the arrow on any article that made you a better player.</div>
@@ -216,7 +216,8 @@ async function init(){
   buildAuthorFilter();
 await loadVotes();
 buildTopIds();
-render();
+  render();
+document.getElementById('footwrap').style.display='';
 }
 
 function buildAuthorFilter(){
