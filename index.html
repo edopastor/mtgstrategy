@@ -214,10 +214,9 @@ async function init(){
     return;
   }
   buildAuthorFilter();
-  render(); // render immediately with zero votes
-  await loadVotes(); // then load votes in background
-  buildTopIds();
-  render(); // re-render with real votes
+await loadVotes();
+buildTopIds();
+render();
 }
 
 function buildAuthorFilter(){
