@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>mtgstrategy.net — The MTG Strategy Archive</title>
 <meta name="description" content="A curated archive of the best Magic: The Gathering strategy articles ever written, ranked by the community.">
-<meta property="og:title" content="mtgstrategy.net — The MTG Strategy Archive">
-<meta property="og:description" content="A curated archive of the best Magic: The Gathering strategy articles ever written, ranked by the community.">
+<meta property="og:title" content="Mtgstrategy — Get Better at Magic">
+<meta property="og:description" content="Get better at Magic with the best strategy articles ever written, ranked by the community.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.mtgstrategy.net">
 <meta property="og:image" content="https://www.mtgstrategy.net/og-image.png">
@@ -145,7 +145,7 @@ button{font-family:inherit;cursor:pointer;}
 <div class="wrap">
   <div id="foot">
     <a href="https://github.com/edopastor/mtgstrategy" target="_blank" rel="noopener">suggest an article on GitHub</a>
-    <div class="fabout"><strong>mtgstrategy.net</strong> is a curated archive of the best Magic: The Gathering strategy writing ever published. The mission is simple: help you get better at the game, one article at a time. The ranking is driven by votes — click the arrow on any article that made you a better player.</div>
+    <div class="fabout">Get better at Magic: The Gathering with the best strategy articles ever written. <strong>mtgstrategy.net</strong> is a community-ranked archive of essential MTG reading — theory, deckbuilding, limited, tournament prep and more. The ranking is driven by votes — click the arrow on any article that made you a better player.</div>
     <div class="fcopy">Not affiliated with Wizards of the Coast LLC. Magic: The Gathering® is a trademark of Wizards of the Coast LLC.</div>
   </div>
 </div>
@@ -175,9 +175,11 @@ async function sbFetch(path,opts={}){
 }
 
 async function loadVotes(){
-  const data=await sbFetch('votes?select=article_id');
+  const [data, mine] = await Promise.all([
+    sbFetch('votes?select=article_id'),
+    sbFetch('votes?fingerprint=eq.'+encodeURIComponent(FP)+'&select=article_id')
+  ]);
   if(data&&Array.isArray(data)) data.forEach(r=>{votes[r.article_id]=(votes[r.article_id]||0)+1;});
-  const mine=await sbFetch('votes?fingerprint=eq.'+encodeURIComponent(FP)+'&select=article_id');
   if(mine&&Array.isArray(mine)) mine.forEach(r=>{myVotes[r.article_id]=true;});
 }
 
@@ -206,16 +208,17 @@ async function castVote(id){
 async function init(){
   try{
     const r=await fetch('articles.json');
-    if(!r.ok)throw new Error('HTTP '+r.status);
+    if(!r.ok) throw new Error('HTTP '+r.status);
     A=await r.json();
   }catch(e){
     document.getElementById('list').innerHTML='<p style="padding:16px;color:#888;font-size:.85em;">Could not load articles.json: '+e.message+'</p>';
     return;
   }
-  await loadVotes();
-  buildTopIds();
   buildAuthorFilter();
-  render();
+  render(); // render immediately with zero votes
+  await loadVotes(); // then load votes in background
+  buildTopIds();
+  render(); // re-render with real votes
 }
 
 function buildAuthorFilter(){
