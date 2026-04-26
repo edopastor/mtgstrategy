@@ -26,22 +26,14 @@ button{font-family:inherit;cursor:pointer;}
 
 /* BAR */
 #bar{background:#111;}
-#bar-inner{max-width:900px;margin:0 auto;padding:0 16px;height:40px;display:flex;align-items:center;gap:0;position:relative;}
+#bar-inner{max-width:900px;margin:0 auto;padding:0 16px;height:40px;display:flex;align-items:center;gap:0;}
 .logo{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.05em;color:#fff;letter-spacing:-.3px;white-space:nowrap;text-decoration:none;flex-shrink:0;margin-right:12px;}
 .logo em{color:rgba(255,255,255,.35);font-style:normal;}
 .logo .alpha{font-size:.62em;color:#ff6600;border:1.5px solid #ff6600;padding:1px 7px;border-radius:20px;margin-right:7px;vertical-align:middle;position:relative;top:-1px;font-family:'IBM Plex Sans',sans-serif;font-weight:500;}
 #catdesk{display:none;}
-#hamburger{display:none;}
 
-/* MOBILE SELECT — off screen, triggered by hamburger */
-#catmob{position:fixed;top:-100px;left:0;opacity:0;pointer-events:none;width:1px;height:1px;border:none;font-size:.85em;}
-
-@media(max-width:599px){
-  #hamburger{background:none;border:none;padding:0;flex-shrink:0;display:flex;flex-direction:column;gap:4px;justify-content:center;width:24px;margin-right:8px;}
-  #hamburger span{display:block;width:18px;height:2px;background:rgba(255,255,255,.7);border-radius:1px;}
-  #hamburger:hover span{background:#fff;}
-  .logo{position:absolute;left:50%;transform:translateX(-50%);margin:0;}
-}
+/* MOBILE SELECT */
+#catmob{width:100%;padding:7px 16px;border:none;border-bottom:1px solid #d8d8d0;background:#eeeeea;font-family:'IBM Plex Sans',sans-serif;font-size:.85em;color:#333;outline:none;display:block;}
 
 @media(min-width:600px){
   #bar-inner{height:38px;}
@@ -103,9 +95,6 @@ button{font-family:inherit;cursor:pointer;}
 
 <div id="bar">
   <div id="bar-inner">
-    <button id="hamburger" onclick="var s=document.getElementById('catmob');try{s.showPicker();}catch(e){s.focus();}" aria-label="categories">
-      <span></span><span></span><span></span>
-    </button>
     <a class="logo" href="#" onclick="goArticles();return false;"><span class="alpha">α</span>mtgstrategy<em>.net</em></a>
     <div id="catdesk">
       <button class="ctab on" data-c="all" onclick="setCatD('all',this)">all</button>
@@ -155,7 +144,7 @@ button{font-family:inherit;cursor:pointer;}
 
 <div class="wrap">
   <div id="foot">
-    <a href="mailto:hello@mtgstrategy.net">hello@mtgstrategy.net</a> · <a href="https://github.com/edopastor/mtgstrategy" target="_blank" rel="noopener">suggest an article on GitHub</a>
+    <a href="https://github.com/edopastor/mtgstrategy" target="_blank" rel="noopener">suggest an article on GitHub</a>
     <div class="fabout"><strong>mtgstrategy.net</strong> is a curated archive of the best Magic: The Gathering strategy writing ever published. The mission is simple: help you get better at the game, one article at a time. The ranking is driven by votes — click the arrow on any article that made you a better player.</div>
     <div class="fcopy">Not affiliated with Wizards of the Coast LLC. Magic: The Gathering® is a trademark of Wizards of the Coast LLC.</div>
   </div>
@@ -293,6 +282,7 @@ function renderA(name){
 function showA(name){
   document.getElementById('mpage').style.display='none';
   document.getElementById('apage').style.display='block';
+  document.getElementById('catmob').style.display='none';
   document.getElementById('catdesk').style.display='none';
   document.getElementById('aname').textContent=name;
   renderA(name);
@@ -302,6 +292,7 @@ function showA(name){
 function goArticles(){
   document.getElementById('mpage').style.display='';
   document.getElementById('apage').style.display='none';
+  document.getElementById('catmob').style.display='';
   document.getElementById('catdesk').style.display='';
 }
 
