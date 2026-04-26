@@ -254,7 +254,7 @@ function rowHTML(a,i){
   const v=getV(a.id),on=myVotes[a.id],top=topIds.has(a.id);
   return `<div class="row">
     <span class="rnum">${i+1}.</span>
-    <button class="vbtn${(on||top)?' on':''}" onclick="castVote(${a.id})" aria-pressed="${!!on}">▲</button>
+    <button class="vbtn${(top)?' on':''}" onclick="castVote(${a.id})" aria-pressed="${!!on}">▲</button>
     <span class="vcnt">${v||''}</span>
     <span class="rbody">
       <a class="rtitle" href="${esc(a.orig)}" target="_blank" rel="noopener">${esc(a.title)}</a>
