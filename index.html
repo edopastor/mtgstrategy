@@ -33,8 +33,8 @@ button{font-family:inherit;cursor:pointer;}
 #catdesk{display:none;}
 #hamburger{display:none;}
 
-/* MOBILE SELECT — hidden, triggered by hamburger */
-#catmob{width:100%;padding:7px 16px;border:none;border-bottom:1px solid #d8d8d0;background:#eeeeea;font-family:'IBM Plex Sans',sans-serif;font-size:.85em;color:#333;outline:none;display:none;}
+/* MOBILE SELECT — off screen, triggered by hamburger */
+#catmob{position:fixed;top:-100px;left:0;opacity:0;pointer-events:none;width:1px;height:1px;border:none;font-size:.85em;}
 
 @media(max-width:599px){
   #hamburger{background:none;border:none;padding:0;flex-shrink:0;display:flex;flex-direction:column;gap:4px;justify-content:center;width:24px;margin-right:8px;}
@@ -293,7 +293,6 @@ function renderA(name){
 function showA(name){
   document.getElementById('mpage').style.display='none';
   document.getElementById('apage').style.display='block';
-  document.getElementById('catmob').style.display='none';
   document.getElementById('catdesk').style.display='none';
   document.getElementById('aname').textContent=name;
   renderA(name);
@@ -303,7 +302,6 @@ function showA(name){
 function goArticles(){
   document.getElementById('mpage').style.display='';
   document.getElementById('apage').style.display='none';
-  document.getElementById('catmob').style.display='';
   document.getElementById('catdesk').style.display='';
 }
 
