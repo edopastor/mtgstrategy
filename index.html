@@ -31,31 +31,27 @@ button{font-family:inherit;cursor:pointer;}
 .logo em{color:rgba(255,255,255,.35);font-style:normal;}
 .logo .alpha{font-size:.62em;color:#ff6600;border:1.5px solid #ff6600;padding:1px 7px;border-radius:20px;margin-right:7px;vertical-align:middle;position:relative;top:-1px;font-family:'IBM Plex Sans',sans-serif;font-weight:500;}
 #catdesk{display:none;}
+#hamburger{display:none;}
 
-/* MOBILE — hamburger + centered logo */
-#hamburger{background:none;border:none;color:rgba(255,255,255,.7);font-size:1.1em;padding:0;line-height:1;flex-shrink:0;display:flex;flex-direction:column;gap:4px;justify-content:center;width:20px;}
-#hamburger span{display:block;width:18px;height:2px;background:rgba(255,255,255,.7);border-radius:1px;}
-#hamburger:hover span{background:#fff;}
-.logo-mobile{position:absolute;left:50%;transform:translateX(-50%);}
-
-/* MOBILE SELECT */
+/* MOBILE SELECT — hidden, triggered by hamburger */
 #catmob{width:100%;padding:7px 16px;border:none;border-bottom:1px solid #d8d8d0;background:#eeeeea;font-family:'IBM Plex Sans',sans-serif;font-size:.85em;color:#333;outline:none;display:none;}
+
+@media(max-width:599px){
+  #hamburger{background:none;border:none;padding:0;flex-shrink:0;display:flex;flex-direction:column;gap:4px;justify-content:center;width:24px;margin-right:8px;}
+  #hamburger span{display:block;width:18px;height:2px;background:rgba(255,255,255,.7);border-radius:1px;}
+  #hamburger:hover span{background:#fff;}
+  .logo{position:absolute;left:50%;transform:translateX(-50%);margin:0;}
+}
 
 @media(min-width:600px){
   #bar-inner{height:38px;}
   .logo{font-size:1.1em;}
-  #hamburger{display:none;}
-  .logo-mobile{position:static;transform:none;}
   #catmob{display:none;}
   #catdesk{display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1;}
   #catdesk::-webkit-scrollbar{display:none;}
   .ctab{background:none;border:none;font-size:.78em;color:rgba(255,255,255,.5);padding:3px 9px;border-radius:3px;white-space:nowrap;}
   .ctab:hover{color:#fff;}
   .ctab.on{background:rgba(255,255,255,.15);color:#fff;}
-}
-
-@media(max-width:599px){
-  .logo{display:none;}
 }
 
 /* WRAP */
@@ -107,10 +103,9 @@ button{font-family:inherit;cursor:pointer;}
 
 <div id="bar">
   <div id="bar-inner">
-    <button id="hamburger" onclick="var s=document.getElementById('catmob');try{s.showPicker();}catch(e){s.focus();s.size=7;}" aria-label="categories">
+    <button id="hamburger" onclick="var s=document.getElementById('catmob');try{s.showPicker();}catch(e){s.focus();}" aria-label="categories">
       <span></span><span></span><span></span>
     </button>
-    <a class="logo logo-mobile" href="#" onclick="goArticles();return false;"><span class="alpha">α</span>mtgstrategy<em>.net</em></a>
     <a class="logo" href="#" onclick="goArticles();return false;"><span class="alpha">α</span>mtgstrategy<em>.net</em></a>
     <div id="catdesk">
       <button class="ctab on" data-c="all" onclick="setCatD('all',this)">all</button>
