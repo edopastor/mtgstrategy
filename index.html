@@ -53,7 +53,7 @@ button{font-family:inherit;cursor:pointer;}
 #ctrl{display:flex;gap:6px;padding:8px 0;border-bottom:1px solid #d8d8d0;}
 #ctrl input[type=search]{flex:1;min-width:120px;padding:5px 8px;border:1px solid #ccc;border-radius:3px;font-size:.84em;font-family:'IBM Plex Sans',sans-serif;background:#fff;outline:none;}
 #ctrl input[type=search]:focus{border-color:#555;}
-#ctrl select{padding:5px 6px;border:1px solid #ccc;border-radius:3px;font-size:.82em;font-family:'IBM Plex Sans',sans-serif;background:#fff;outline:none;max-width:180px;}
+#ctrl select{padding:5px 6px;border:1px solid #ccc;border-radius:3px;font-size:.82em;font-family:'IBM Plex Sans',sans-serif;background:#fff;outline:none;max-width:90px;}
 
 /* ROWS */
 #list{padding:2px 0;}
@@ -124,7 +124,7 @@ button{font-family:inherit;cursor:pointer;}
     <div id="ctrl">
       <input type="search" id="q" placeholder="search title or author…" oninput="render()">
       <select id="authorFilter" onchange="render()">
-        <option value="">all authors</option>
+        <option value="">authors</option>
       </select>
     </div>
     <div id="list"><p class="loading">loading…</p></div>
