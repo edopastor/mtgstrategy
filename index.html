@@ -3,65 +3,67 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MTG Strategy – The Greatest Magic: The Gathering Strategy Articles Ever Written</title>
+<title>mtgstrategy.net — The MTG Strategy Archive</title>
 <meta name="description" content="A curated archive of the best Magic: The Gathering strategy articles ever written, ranked by the community.">
-<meta property="og:title" content="MTG Strategy – Greatest Magic Articles Ever Written">
+<meta property="og:title" content="mtgstrategy.net — The MTG Strategy Archive">
+<meta property="og:description" content="A curated archive of the best Magic: The Gathering strategy articles ever written, ranked by the community.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.mtgstrategy.net">
+<meta property="og:image" content="https://www.mtgstrategy.net/og-image.png">
 <link rel="canonical" href="https://www.mtgstrategy.net">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"MTG Strategy","url":"https://www.mtgstrategy.net","description":"A curated archive of the best Magic: The Gathering strategy articles ever written, ranked by the community."}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Space+Grotesk:wght@800&display=swap" rel="stylesheet">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="349c1f8d-1d72-4435-a485-c0780538d76c"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'IBM Plex Sans',Verdana,sans-serif;font-size:15px;background:#f6f6ef;color:#000;line-height:1.4;}
 a{color:inherit;text-decoration:none;}
 button{font-family:inherit;cursor:pointer;}
 
-/* TOP BAR */
+/* BAR */
 #bar{background:#111;}
-#bar-inner{max-width:900px;margin:0 auto;padding:0 16px;height:40px;display:flex;align-items:center;gap:8px;}
-.logo{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.05em;color:#fff;letter-spacing:-.3px;white-space:nowrap;text-decoration:none;flex-shrink:0;}
-.logo em{color:rgba(255,255,255,.38);font-style:normal;}
-
-/* CATEGORY — mobile select */
-#catmob{width:100%;padding:7px 16px;border:none;border-bottom:1px solid #d8d8d0;background:#eeeeea;font-family:'IBM Plex Sans',sans-serif;font-size:.85em;color:#333;outline:none;display:block;}
-
-/* CATEGORY — desktop tabs (inside bar) */
+#bar-inner{max-width:900px;margin:0 auto;padding:0 16px;height:40px;display:flex;align-items:center;gap:0;}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:1.05em;color:#fff;letter-spacing:-.3px;white-space:nowrap;text-decoration:none;flex-shrink:0;margin-right:12px;}
+.logo em{color:rgba(255,255,255,.35);font-style:normal;}
+.logo .alpha{font-size:.62em;color:#ff6600;border:1.5px solid #ff6600;padding:1px 7px;border-radius:20px;margin-right:7px;vertical-align:middle;position:relative;top:-1px;font-family:'IBM Plex Sans',sans-serif;font-weight:500;}
 #catdesk{display:none;}
 
+/* MOBILE SELECT */
+#catmob{width:100%;padding:7px 16px;border:none;border-bottom:1px solid #d8d8d0;background:#eeeeea;font-family:'IBM Plex Sans',sans-serif;font-size:.85em;color:#333;outline:none;display:block;}
+
 @media(min-width:600px){
-  #bar-inner{height:38px;gap:0;}
-  .logo{font-size:1.1em;margin-right:12px;}
+  #bar-inner{height:38px;}
+  .logo{font-size:1.1em;}
   #catmob{display:none;}
   #catdesk{display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1;}
   #catdesk::-webkit-scrollbar{display:none;}
-  .ctab{background:none;border:none;font-size:.8em;color:rgba(255,255,255,.55);padding:3px 9px;border-radius:3px;white-space:nowrap;}
+  .ctab{background:none;border:none;font-size:.78em;color:rgba(255,255,255,.5);padding:3px 9px;border-radius:3px;white-space:nowrap;}
   .ctab:hover{color:#fff;}
   .ctab.on{background:rgba(255,255,255,.15);color:#fff;}
 }
 
-/* MAIN WRAP */
-.wrap{max-width:900px;margin:0 auto;padding:0 8px;}
+/* WRAP */
+.wrap{max-width:900px;margin:0 auto;padding:0 16px;}
 
 /* CONTROLS */
-#ctrl{display:flex;gap:6px;padding:8px 0;border-bottom:1px solid #d8d8d0;flex-wrap:wrap;}
+#ctrl{display:flex;gap:6px;padding:8px 0;border-bottom:1px solid #d8d8d0;}
 #ctrl input[type=search]{flex:1;min-width:120px;padding:5px 8px;border:1px solid #ccc;border-radius:3px;font-size:.84em;font-family:'IBM Plex Sans',sans-serif;background:#fff;outline:none;}
 #ctrl input[type=search]:focus{border-color:#555;}
 #ctrl select{padding:5px 6px;border:1px solid #ccc;border-radius:3px;font-size:.82em;font-family:'IBM Plex Sans',sans-serif;background:#fff;outline:none;max-width:180px;}
 
-#cnt{padding:5px 0;font-size:.78em;color:#888;border-bottom:1px solid #d8d8d0;}
-
-/* ARTICLE ROWS */
+/* ROWS */
 #list{padding:2px 0;}
 .row{display:flex;align-items:baseline;padding:6px 0;gap:6px;border-bottom:1px solid #eeeee8;}
-.row:hover{background:#f0f0e8;margin:0 -8px;padding:6px 8px;}
-.rnum{color:#bbb;font-size:.78em;width:20px;text-align:right;flex-shrink:0;}
-.vwrap{display:flex;align-items:center;gap:3px;flex-shrink:0;}
-.vbtn{background:none;border:none;font-size:.85em;padding:0;line-height:1;color:#ccc;transition:color .1s,transform .12s;font-weight:700;}
+.row:hover{background:#f0f0e8;margin:0 -16px;padding:6px 16px;}
+.rnum{color:#bbb;font-size:.78em;width:22px;text-align:right;flex-shrink:0;}
+.vbtn{background:none;border:none;font-size:.85em;padding:0;line-height:1;color:#ccc;font-weight:700;flex-shrink:0;transition:color .1s,transform .12s;}
 .vbtn:hover{color:#888;transform:scale(1.15);}
 .vbtn.on{color:#ff6600;}
-.vcnt{font-size:.74em;color:#aaa;min-width:12px;}
+.vcnt{font-size:.74em;color:#aaa;min-width:14px;flex-shrink:0;}
 .vbtn.on+.vcnt{color:#ff6600;}
 .rbody{flex:1;min-width:0;}
 .rtitle{font-size:.93em;font-weight:500;color:#000;}
@@ -83,11 +85,9 @@ button{font-family:inherit;cursor:pointer;}
 /* FOOTER */
 #foot{padding:10px 0;font-size:.75em;color:#999;border-top:1px solid #d8d8d0;margin-top:8px;line-height:1.9;text-align:center;}
 #foot a{color:#777;text-decoration:underline;}
-.fcopy{font-size:.82em;color:#bbb;margin-top:4px;line-height:1.6;}
 .fabout{font-size:.78em;color:#aaa;margin-top:6px;line-height:1.7;max-width:580px;margin-left:auto;margin-right:auto;}
 .fabout a{color:#888;text-decoration:underline;}
-
-/* LOADING */
+.fcopy{font-size:.80em;color:#bbb;margin-top:4px;line-height:1.6;}
 .loading{padding:20px 0;color:#888;font-size:.85em;}
 </style>
 </head>
@@ -95,7 +95,7 @@ button{font-family:inherit;cursor:pointer;}
 
 <div id="bar">
   <div id="bar-inner">
-    <a class="logo" href="#" onclick="goArticles();return false;">mtgstrategy<em>.net</em></a>
+    <a class="logo" href="#" onclick="goArticles();return false;"><span class="alpha">α</span>mtgstrategy<em>.net</em></a>
     <div id="catdesk">
       <button class="ctab on" data-c="all" onclick="setCatD('all',this)">all</button>
       <button class="ctab" data-c="theory" onclick="setCatD('theory',this)">theory</button>
@@ -127,7 +127,6 @@ button{font-family:inherit;cursor:pointer;}
         <option value="">all authors</option>
       </select>
     </div>
-    <div id="cnt"></div>
     <div id="list"><p class="loading">loading…</p></div>
   </div>
 </div>
@@ -145,8 +144,8 @@ button{font-family:inherit;cursor:pointer;}
 
 <div class="wrap">
   <div id="foot">
-    <a href="mailto:hello@mtgstrategy.net">hello@mtgstrategy.net</a>
-    <div class="fabout"><strong>mtgstrategy.net</strong> is a curated archive of the best Magic: The Gathering strategy writing ever published. The mission is simple: help you get better at the game, one article at a time. The ranking is driven by votes — click the arrow on any article that made you a better player. If you know a great article that isn't here yet, email me at <a href="mailto:hello@mtgstrategy.net">hello@mtgstrategy.net</a>. The best thing you can do for the site is share it with anyone who loves the game.</div>
+    <a href="https://github.com/edopastor/mtgstrategy" target="_blank" rel="noopener">suggest an article on GitHub</a>
+    <div class="fabout"><strong>mtgstrategy.net</strong> is a curated archive of the best Magic: The Gathering strategy writing ever published. The mission is simple: help you get better at the game, one article at a time. The ranking is driven by votes — click the arrow on any article that made you a better player.</div>
     <div class="fcopy">Not affiliated with Wizards of the Coast LLC. Magic: The Gathering® is a trademark of Wizards of the Coast LLC.</div>
   </div>
 </div>
@@ -154,65 +153,52 @@ button{font-family:inherit;cursor:pointer;}
 <script>
 const SUPA_URL='https://owhsqvkqhqoqmvhprldw.supabase.co';
 const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im93aHNxdmtxaHFvcW12aHBybGR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4OTMyMTcsImV4cCI6MjA5MjQ2OTIxN30.BxVtOpZP_PohnJPjr2Tddj8ack8UwArZYBRLINoU-Wc';
-
 const CATS={theory:'theory',deckbuilding:'deckbuilding',limited:'limited',tournament:'tournament',mental:'mental game',history:'history & culture'};
 
-let A=[], votes={}, myVotes={}, cat='all';
+let A=[], votes={}, myVotes={}, cat='all', topIds=new Set();
 
 function getFingerprint(){
   let fp=localStorage.getItem('mtg_fp');
-  if(!fp){
-    fp=Math.random().toString(36).slice(2)+Date.now().toString(36);
-    localStorage.setItem('mtg_fp',fp);
-  }
+  if(!fp){fp=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem('mtg_fp',fp);}
   return fp;
 }
 const FP=getFingerprint();
 
 async function sbFetch(path,opts={}){
   const r=await fetch(SUPA_URL+'/rest/v1/'+path,{
-    headers:{
-      'apikey':SUPA_KEY,
-      'Authorization':'Bearer '+SUPA_KEY,
-      'Content-Type':'application/json',
-      'Prefer':opts.prefer||'',
-      ...opts.headers
-    },
+    headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Content-Type':'application/json','Prefer':opts.prefer||'',...opts.headers},
     method:opts.method||'GET',
     body:opts.body?JSON.stringify(opts.body):undefined
   });
-  if(r.status===204||r.status===201) return null;
+  if(r.status===204||r.status===201)return null;
   return r.json();
 }
 
 async function loadVotes(){
   const data=await sbFetch('votes?select=article_id');
-  if(data&&Array.isArray(data)){
-    data.forEach(row=>{
-      votes[row.article_id]=(votes[row.article_id]||0)+1;
-    });
-  }
+  if(data&&Array.isArray(data)) data.forEach(r=>{votes[r.article_id]=(votes[r.article_id]||0)+1;});
   const mine=await sbFetch('votes?fingerprint=eq.'+encodeURIComponent(FP)+'&select=article_id');
-  if(mine&&Array.isArray(mine)){
-    mine.forEach(row=>{ myVotes[row.article_id]=true; });
-  }
+  if(mine&&Array.isArray(mine)) mine.forEach(r=>{myVotes[r.article_id]=true;});
+}
+
+function getV(id){return votes[id]||0;}
+
+function buildTopIds(){
+  const sorted=[...A].sort((a,b)=>getV(b.id)-getV(a.id));
+  topIds=new Set(sorted.slice(0,10).map(a=>a.id));
 }
 
 async function castVote(id){
   if(myVotes[id]){
-    await sbFetch('votes?article_id=eq.'+id+'&fingerprint=eq.'+encodeURIComponent(FP),{
-      method:'DELETE',prefer:'return=minimal'
-    });
+    await sbFetch('votes?article_id=eq.'+id+'&fingerprint=eq.'+encodeURIComponent(FP),{method:'DELETE',prefer:'return=minimal'});
     delete myVotes[id];
     votes[id]=Math.max(0,(votes[id]||1)-1);
   } else {
-    await sbFetch('votes',{
-      method:'POST',prefer:'return=minimal',
-      body:{article_id:id,fingerprint:FP}
-    });
+    await sbFetch('votes',{method:'POST',prefer:'return=minimal',body:{article_id:id,fingerprint:FP}});
     myVotes[id]=true;
     votes[id]=(votes[id]||0)+1;
   }
+  buildTopIds();
   if(document.getElementById('apage').style.display==='block') renderA(document.getElementById('aname').textContent);
   else render();
 }
@@ -220,13 +206,14 @@ async function castVote(id){
 async function init(){
   try{
     const r=await fetch('articles.json');
-    if(!r.ok) throw new Error('HTTP '+r.status);
+    if(!r.ok)throw new Error('HTTP '+r.status);
     A=await r.json();
   }catch(e){
     document.getElementById('list').innerHTML='<p style="padding:16px;color:#888;font-size:.85em;">Could not load articles.json: '+e.message+'</p>';
     return;
   }
   await loadVotes();
+  buildTopIds();
   buildAuthorFilter();
   render();
 }
@@ -234,14 +221,8 @@ async function init(){
 function buildAuthorFilter(){
   const authors=[...new Set(A.map(a=>a.author))].sort();
   const sel=document.getElementById('authorFilter');
-  authors.forEach(au=>{
-    const o=document.createElement('option');
-    o.value=au;o.textContent=au;
-    sel.appendChild(o);
-  });
+  authors.forEach(au=>{const o=document.createElement('option');o.value=au;o.textContent=au;sel.appendChild(o);});
 }
-
-function getV(id){return votes[id]||0;}
 
 function setCat(c){
   cat=c;
@@ -259,29 +240,26 @@ function setCatD(c,el){
 function getList(){
   const q=document.getElementById('q').value.toLowerCase().trim();
   const au=document.getElementById('authorFilter').value;
-  let L=A.filter(a=>{
+  return A.filter(a=>{
     if(cat!=='all'&&a.cat!==cat)return false;
     if(q&&!a.title.toLowerCase().includes(q)&&!a.author.toLowerCase().includes(q))return false;
     if(au&&a.author!==au)return false;
     return true;
-  });
-  L.sort((a,b)=>getV(b.id)-getV(a.id)||a.title.localeCompare(b.title));
-  return L;
+  }).sort((a,b)=>getV(b.id)-getV(a.id)||a.title.localeCompare(b.title));
 }
 
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
 function rowHTML(a,i){
-  const v=getV(a.id), on=myVotes[a.id], top=i<10;
-  const esc=a.author.replace(/'/g,"\\'");
+  const v=getV(a.id),on=myVotes[a.id],top=topIds.has(a.id);
   return `<div class="row">
     <span class="rnum">${i+1}.</span>
-    <span class="vwrap">
-      <button class="vbtn${(on||top)?' on':''}" onclick="castVote(${a.id})" aria-pressed="${!!on}">▲</button>
-      <span class="vcnt">${top?v:''}</span>
-    </span>
+    <button class="vbtn${(on||top)?' on':''}" onclick="castVote(${a.id})" aria-pressed="${!!on}">▲</button>
+    <span class="vcnt">${v||''}</span>
     <span class="rbody">
-      <a class="rtitle" href="${a.orig}" target="_blank" rel="noopener">${a.title}</a>
+      <a class="rtitle" href="${esc(a.orig)}" target="_blank" rel="noopener">${esc(a.title)}</a>
       <div class="rmeta">
-        <button class="rauth" onclick="showA('${esc}')">${a.author}</button>
+        <button class="rauth" data-author="${esc(a.author)}">${esc(a.author)}</button>
         <span class="rsep">·</span>${CATS[a.cat]||a.cat}
       </div>
     </span>
@@ -290,10 +268,15 @@ function rowHTML(a,i){
 
 function render(){
   const L=getList();
-  document.getElementById('cnt').textContent=L.length+' article'+(L.length!==1?'s':'');
   document.getElementById('list').innerHTML=L.length
     ?L.map((a,i)=>rowHTML(a,i)).join('')
     :'<p style="padding:20px 0;color:#888;font-size:.85em;">No articles match.</p>';
+}
+
+function renderA(name){
+  const L=A.filter(a=>a.author===name).sort((a,b)=>getV(b.id)-getV(a.id)||a.title.localeCompare(b.title));
+  document.getElementById('astat').innerHTML=`<b>${L.length}</b> article${L.length!==1?'s':''} · <b>${L.reduce((s,a)=>s+getV(a.id),0)}</b> votes`;
+  document.getElementById('alist').innerHTML=L.map((a,i)=>rowHTML(a,i)).join('');
 }
 
 function showA(name){
@@ -305,11 +288,6 @@ function showA(name){
   renderA(name);
   window.scrollTo(0,0);
 }
-function renderA(name){
-  const L=A.filter(a=>a.author===name).sort((a,b)=>getV(b.id)-getV(a.id)||a.title.localeCompare(b.title));
-  document.getElementById('astat').innerHTML=`<b>${L.length}</b> article${L.length!==1?'s':''} · <b>${L.reduce((s,a)=>s+getV(a.id),0)}</b> votes`;
-  document.getElementById('alist').innerHTML=L.map((a,i)=>rowHTML(a,i)).join('');
-}
 
 function goArticles(){
   document.getElementById('mpage').style.display='';
@@ -317,6 +295,11 @@ function goArticles(){
   document.getElementById('catmob').style.display='';
   document.getElementById('catdesk').style.display='';
 }
+
+document.addEventListener('click',function(e){
+  const btn=e.target.closest('.rauth');
+  if(btn)showA(btn.dataset.author);
+});
 
 init();
 </script>
