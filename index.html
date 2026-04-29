@@ -191,8 +191,7 @@ function buildTopIds(){
 
 async function castVote(id){
   if(myVotes[id]){
-    await sbFetch('votes?article_id=eq.'+id+'&fingerprint=eq.'+encodeURIComponent(FP),{method:'DELETE',prefer:'return=minimal'});
-    delete myVotes[id];
+await sbFetch('votes?article_id=eq.'+id+'&fingerprint=eq.'+encodeURIComponent(FP),{method:'DELETE',prefer:'return=minimal',headers:{'x-fingerprint':FP}});    delete myVotes[id];
     votes[id]=Math.max(0,(votes[id]||1)-1);
   } else {
     await sbFetch('votes',{method:'POST',prefer:'return=minimal',body:{article_id:id,fingerprint:FP}});
