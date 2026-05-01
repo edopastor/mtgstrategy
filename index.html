@@ -88,6 +88,33 @@ button{font-family:inherit;cursor:pointer;}
 .fabout{font-size:.78em;color:#aaa;margin-top:6px;line-height:1.7;max-width:580px;margin-left:auto;margin-right:auto;}
 .fabout a{color:#888;text-decoration:underline;}
 .fcopy{font-size:.80em;color:#bbb;margin-top:4px;line-height:1.6;}
+
+/* RECENTLY ADDED ARTICLES */
+.row.featured {
+  border: 1px solid #ff6600;
+  border-radius: 6px;
+  margin: 0 0 10px 0;
+  padding: 8px 12px;
+  background: #fffaf5;
+}
+.row.featured:hover {
+  background: #fff0e5;
+  margin: 0 0 10px 0; 
+  padding: 8px 12px;
+}
+.badge-recent {
+  display: block;
+  color: #ff6600;
+  font-size: 0.75em;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  letter-spacing: 0.5px;
+}
+.rnum.star {
+  color: #ff6600;
+  font-size: 0.9em;
+}
 </style>
 </head>
 <body>
@@ -251,13 +278,19 @@ function getList(){
 
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
-function rowHTML(a,i){
-  const v=getV(a.id),on=myVotes[a.id],top=topIds.has(a.id);
-  return `<div class="row">
-    <span class="rnum">${i+1}.</span>
+function rowHTML(a, i, isFeatured = false){
+  const v = getV(a.id), on = myVotes[a.id], top = topIds.has(a.id);
+  
+  const rowClass = isFeatured ? 'row featured' : 'row';
+  const numHtml = isFeatured ? '<span class="rnum star">★</span>' : `<span class="rnum">${i + 1}.</span>`;
+  const badgeHtml = isFeatured ? '<span class="badge-recent">Recently Added</span>' : '';
+
+  return `<div class="${rowClass}">
+    ${numHtml}
     <button class="vbtn${(top)?' on':''}" onclick="castVote(${a.id})" aria-pressed="${!!on}">▲</button>
     <span class="vcnt">${v||''}</span>
     <span class="rbody">
+      ${badgeHtml}
       <a class="rtitle" href="${esc(a.orig)}" target="_blank" rel="noopener">${esc(a.title)}</a>
       <div class="rmeta">
         <button class="rauth" data-author="${esc(a.author)}">${esc(a.author)}</button>
@@ -266,12 +299,26 @@ function rowHTML(a,i){
     </span>
   </div>`;
 }
-
+  
 function render(){
-  const L=getList();
-  document.getElementById('list').innerHTML=L.length
-    ?L.map((a,i)=>rowHTML(a,i)).join('')
-    :'<p style="padding:20px 0;color:#888;font-size:.85em;">No articles match.</p>';
+  let L = getList();
+  let html = '';
+
+  // Separate the list into recently added and normal arrays
+  const featured = L.filter(a => a.is_new);
+  const normal = L.filter(a => !a.is_new);
+
+  // Render all recently added articles at the top
+  featured.forEach((a, i) => {
+    html += rowHTML(a, i, true);
+  });
+
+  // Render the remaining articles below them
+  normal.forEach((a, i) => {
+    html += rowHTML(a, i, false); 
+  });
+
+  document.getElementById('list').innerHTML = html || '<p style="padding:20px 0;color:#888;font-size:.85em;">No articles match.</p>';
 }
 
 function renderA(name){
