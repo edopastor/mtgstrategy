@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="/style.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>mtgstrategy — Get Better at Magic</title>
@@ -20,19 +21,22 @@
 <script defer src="https://cloud.umami.is/script.js" data-website-id="349c1f8d-1d72-4435-a485-c0780538d76c"></script>
 
 </head>
-<body>
+<body data-type="home">
 
 <div id="bar">
   <div id="bar-inner">
-    <a class="logo" href="#" onclick="goArticles();return false;"><span class="alpha">α</span>mtgstrategy<em>.net</em></a>
+    <!-- Logo now points back to the root homepage -->
+    <a class="logo" href="/"><span class="alpha">α</span>mtgstrategy<em>.net</em></a>
+    
     <div id="catdesk">
-      <button class="ctab on" data-c="all" onclick="setCatD('all',this)">all</button>
-      <button class="ctab" data-c="theory" onclick="setCatD('theory',this)">theory</button>
-      <button class="ctab" data-c="deckbuilding" onclick="setCatD('deckbuilding',this)">deckbuilding</button>
-      <button class="ctab" data-c="limited" onclick="setCatD('limited',this)">limited</button>
-      <button class="ctab" data-c="tournament" onclick="setCatD('tournament',this)">tournament</button>
-      <button class="ctab" data-c="mental" onclick="setCatD('mental',this)">mental game</button>
-      <button class="ctab" data-c="history" onclick="setCatD('history',this)">history & culture</button>
+      <!-- Buttons are now actual links for perfect SEO -->
+      <a class="ctab" href="/">all</a>
+      <a class="ctab" href="/category/theory.html">theory</a>
+      <a class="ctab" href="/category/deckbuilding.html">deckbuilding</a>
+      <a class="ctab" href="/category/limited.html">limited</a>
+      <a class="ctab" href="/category/tournament.html">tournament</a>
+      <a class="ctab" href="/category/mental.html">mental game</a>
+      <a class="ctab" href="/category/history.html">history & culture</a>
     </div>
   </div>
 </div>
@@ -79,5 +83,7 @@
   </div>
 </div>
 
+<script src="/app.js"></script>
+  
 </body>
 </html>
