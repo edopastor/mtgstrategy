@@ -88,12 +88,21 @@ function setCatD(c,el){
 }
 
 function getList(){
-  const q=document.getElementById('q').value.toLowerCase().trim();
-  const au=document.getElementById('authorFilter').value;
-  return A.filter(a=>{
-    if(cat!=='all'&&a.cat!==cat)return false;
-    if(q&&!a.title.toLowerCase().includes(q)&&!a.author.toLowerCase().includes(q))return false;
-    if(au&&a.author!==au)return false;
+  const q = document.getElementById('q')?.value.toLowerCase().trim() || '';
+  const au = document.getElementById('authorFilter')?.value;
+  
+  // Get the page type from the body tag
+  const pageType = document.body.dataset.type || 'home';
+  const pageValue = document.body.dataset.value || '';
+
+  return A.filter(a => {
+    // Page specific filtering
+    if(pageType === 'category' && a.cat !== pageValue) return false;
+    if(pageType === 'author' && a.author !== pageValue) return false;
+    
+    // Normal UI filtering
+    if(q && !a.title.toLowerCase().includes(q) && !a.author.toLowerCase().includes(q)) return false;
+    if(au && a.author !== au) return false;
     return true;
   }).sort((a,b)=>getV(b.id)-getV(a.id)||a.title.localeCompare(b.title));
 }
@@ -141,29 +150,6 @@ function render(){
   });
 
   document.getElementById('list').innerHTML = html || '<p style="padding:20px 0;color:#888;font-size:.85em;">No articles match.</p>';
-}
-
-function renderA(name){
-  const L=A.filter(a=>a.author===name).sort((a,b)=>getV(b.id)-getV(a.id)||a.title.localeCompare(b.title));
-  document.getElementById('astat').innerHTML=`<b>${L.length}</b> article${L.length!==1?'s':''} · <b>${L.reduce((s,a)=>s+getV(a.id),0)}</b> votes`;
-  document.getElementById('alist').innerHTML=L.map((a,i)=>rowHTML(a,i)).join('');
-}
-
-function showA(name){
-  document.getElementById('mpage').style.display='none';
-  document.getElementById('apage').style.display='block';
-  document.getElementById('catmob').style.display='none';
-  document.getElementById('catdesk').style.display='none';
-  document.getElementById('aname').textContent=name;
-  renderA(name);
-  window.scrollTo(0,0);
-}
-
-function goArticles(){
-  document.getElementById('mpage').style.display='';
-  document.getElementById('apage').style.display='none';
-  document.getElementById('catmob').style.display='';
-  document.getElementById('catdesk').style.display='';
 }
 
 document.addEventListener('click',function(e){
