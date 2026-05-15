@@ -531,7 +531,21 @@
   "author": "Frank Kusumoto",
   "cat": "history",
   "orig": "https://groups.google.com/g/rec.games.trading-cards.magic.strategy/c/7q04Kail-jY/m/JU7-43kk4JAJ",
-  "is_new": true
-}
-  
+},
+{
+    "id": 78,
+    "title": "Casting blue spells",
+    "author": "Nick Spagnolo",
+    "cat": "theory",
+    "orig": "https://web.archive.org/web/20101101095814/http://magic.tcgplayer.com/db/article.asp?ID=9237",
+    "is_new": true
+  },
+  {
+    "id": 79,
+    "title": "The Basics of Playing the Game: Paranoia is Good",
+    "author": "Peter Jahn",
+    "cat": "mental",
+    "orig": "https://articles.starcitygames.com/articles/the-basics-of-playing-the-game-paranoia-is-good/",
+    "is_new": true
+  }
 ]
