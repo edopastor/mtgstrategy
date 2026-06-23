@@ -537,7 +537,7 @@
     "author": "Nick Spagnolo",
     "cat": "theory",
     "orig": "https://web.archive.org/web/20101101095814/http://magic.tcgplayer.com/db/article.asp?ID=9237",
-    "is_new": true
+    "is_new": false
   },
   {
     "id": 79,
@@ -545,6 +545,14 @@
     "author": "Peter Jahn",
     "cat": "mental",
     "orig": "https://articles.starcitygames.com/articles/the-basics-of-playing-the-game-paranoia-is-good/",
-    "is_new": true
-  }
+    "is_new": false
+  },
+  {
+  "id": 80
+  "title": "SCG Classic – Tomfidence",
+  "author": "Jon Becker",
+  "cat": "mental",
+  "orig": "https://articles.starcitygames.com/articles/scg-classic-tomfidence/",
+  "is_new": true
+}
 ]
